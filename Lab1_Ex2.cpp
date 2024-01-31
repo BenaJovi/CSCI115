@@ -62,7 +62,7 @@ class LinkedList {
     void PrintList() {
       Node* temp = head;
       if(temp != NULL) {
-        cout<<"The list contains: ";
+        cout<<"Items in the linked list:: ";
         while(temp != NULL) {
           cout<<temp->data<<" ";
           temp = temp->next;
