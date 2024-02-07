@@ -4,11 +4,11 @@
 * 
 * 
 */
-
-
 #include <iostream>
 #include <ctime>
 using namespace std;
+
+
 // Fibonacci Sequence Using Recursion 
 int RecursiveFib(int n)
 {
@@ -16,11 +16,10 @@ int RecursiveFib(int n)
    {
        return n;
    }
-       return RecursiveFib(n-1)+RecursiveFib(n-2);
+       return RecursiveFib(n-1)+RecursiveFib(n-2);  
   
 }
   
-
 // Fibonacci Sequence Using Memoization 
 int memoizationFib(int n){
    int fib[n+1];
@@ -30,9 +29,8 @@ int memoizationFib(int n){
        fib[i]=fib[i-1]+fib[i-2];
    }
    return fib[n];
-
-
 }
+
 // Fibonacci Sequence Using Bottom-Up 
 int iterativeFib(int n){
    int previous=0;
@@ -47,33 +45,29 @@ int iterativeFib(int n){
 }
 
 
-
-
 int main()
 {
-int num= 100;
-   cout<<"Recursive:";
-   clock_t start_time, end_time; // Using <Ctime> to initialize time functions
-   start_time =clock();// Starts Timer
-   cout<<RecursiveFib(num)<<endl; // Executes Function Using Recursion
-   end_time=clock();// Ends Timer
-   cout << "Time taken: " << (double)(end_time - start_time) / CLOCKS_PER_SEC << " seconds" << endl; // Calculates Time Taken From Start To End
+    int num= 120;
+    clock_t start_time, end_time; // Using <Ctime> to initialize time functions
+    cout<<"This is a test using 120 to show it only works for memoization and iterative methods."<<endl;
+    cout<<"Input:"<<num<<endl;
+    cout<<"Memoization Output:";
+    start_time =clock();// Starts Timer
+    cout<<memoizationFib(num)<<endl;
+    end_time=clock();// Ends Timer
+    cout << "Time taken: " << (double)(end_time - start_time) / CLOCKS_PER_SEC << " seconds" << endl; // Calculates Time Taken From Start To End
 
+    cout<<"Input:"<<num<<endl;
+    cout<<"Bottom-Up Output:";
+    start_time =clock();// Starts Timer
+    cout<<iterativeFib(num)<<endl;
+    end_time=clock();// Ends Timer
+    cout << "Time taken: " << (double)(end_time - start_time) / CLOCKS_PER_SEC << " seconds" << endl; // Calculates Time Taken From Start To End
 
-   cout<<"Memoization:";
-   start_time =clock();// Starts Timer
-   cout<<memoizationFib(num)<<endl;
-   end_time=clock();// Ends Timer
-   cout << "Time taken: " << (double)(end_time - start_time) / CLOCKS_PER_SEC << " seconds" << endl; // Calculates Time Taken From Start To End
-
-
-   cout<<"Bottom-Up:";
-   start_time =clock();// Starts Timer
-   cout<<iterativeFib(num)<<endl;
-   end_time=clock();// Ends Timer
-   cout << "Time taken: " << (double)(end_time - start_time) / CLOCKS_PER_SEC << " seconds" << endl; // Calculates Time Taken From Start To End
-
-
-
-
+    cout<<"Input:"<<num<<endl;
+    cout<<"Recursive Output:";
+    start_time =clock();// Starts Timer
+    cout<<RecursiveFib(num)<<endl; // Executes Function Using Recursion
+    end_time=clock();// Ends Timer
+    cout << "Time taken: " << (double)(end_time - start_time) / CLOCKS_PER_SEC << " seconds" << endl; // Calculates Time Taken From Start To End
 }

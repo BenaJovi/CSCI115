@@ -42,7 +42,7 @@ class LinkedList {
         free(temp); 
       }
     }
-
+  
    //Delete last node of the list
     void endDelete() {
       if(head != NULL) {
