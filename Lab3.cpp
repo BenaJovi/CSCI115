@@ -8,7 +8,7 @@
 #include <ctime>
 using namespace std;
 
-void sortedArray(int arr[], int n){
+void sortedArray(int arr[], int n){   // Funciton that creates a sorted in array size of n
     for (int i=0;i<n;i++){
     arr[i]=i;
     }
@@ -16,7 +16,7 @@ void sortedArray(int arr[], int n){
 
 }
 
-void halfSortedArray(int arr[],int n){
+void halfSortedArray(int arr[],int n){ // Function that creates a half sorted array size of n 
     for (int i=0;i<n;i++){
         if(i<n/2)
         {
@@ -30,7 +30,7 @@ void halfSortedArray(int arr[],int n){
     return;
 }
 
-void reverseSortedArray(int arr[],int n){
+void reverseSortedArray(int arr[],int n){ // Function that creates a reverse sorted array size of n 
     for(int i=0; i<n;i++){
         arr[i]=n-i;
     }
@@ -39,15 +39,15 @@ void reverseSortedArray(int arr[],int n){
 }
 
 // Selection sort 
-void selectionSort(int arr[], int n)
+void selectionSort(int arr[], int n)     
 {
     int i, j, min_idx;
 
-    for (i = 0; i < n - 1; i++) {
+    for (i = 0; i < n - 1; i++) {      
         min_idx = i;
-        for (j = i + 1; j < n; j++) {
-            if (arr[j] < arr[min_idx])
-                min_idx = j;
+        for (j = i + 1; j < n; j++) {  
+            if (arr[j] < arr[min_idx]) 
+                min_idx = j;           
         }
         if (min_idx != i)
             swap(arr[min_idx], arr[i]);
@@ -118,66 +118,66 @@ void printArray(int arr[], int n)
 int main()
 {
     clock_t start_time, end_time; // Using <Ctime> to initialize time functions
-    int size=10000;
+    int size=100000;
     int* array= new int[size];
 
-    cout<<"Sorted Array:"<<endl;
+    cout<<"Case 1: Sorted Array"<<endl;
     sortedArray(array,size);
-    //printArray(array,size);
+    printArray(array,size);
 
     start_time =clock();// Starts Timer
     selectionSort(array,size);
     end_time=clock();
-    //cout<<"After selection sort:"<<endl;
-    //printArray(array,size);
+    cout<<"After selection sort:"<<endl;
+    printArray(array,size);
     cout << "Time taken using selection sort: " << (double)(end_time - start_time) / CLOCKS_PER_SEC << " seconds" << endl; // Calculates Time Taken From Start To End 
 
     sortedArray(array,size);
     start_time =clock();// Starts Timer
     mergeSort(array,0,size-1);
     end_time=clock();
-    //cout<<"After merge sort:"<<endl;
-    //printArray(array,size);
+    cout<<"After merge sort:"<<endl;
+    printArray(array,size);
     cout << "Time taken using merge sort: " << (double)(end_time - start_time) / CLOCKS_PER_SEC << " seconds" << endl; // Calculates Time Taken From Start To End 
     cout<<"\n";
     
 
-    cout<<"Half sorted array:"<<endl;
+    cout<<"Case 2: Half sorted array"<<endl;
     halfSortedArray(array,size);
-    //printArray(array,size);
+    printArray(array,size);
 
     start_time =clock();// Starts Timer
     selectionSort(array,size);
     end_time=clock();
-    //cout<<"After selection sort:"<<endl;
-    //printArray(array,size);
+    cout<<"After selection sort:"<<endl;
+    printArray(array,size);
     cout << "Time taken using selection sort: " << (double)(end_time - start_time) / CLOCKS_PER_SEC << " seconds" << endl; // Calculates Time Taken From Start To End
 
     halfSortedArray(array,size);
     start_time =clock();// Starts Timer
     mergeSort(array,0,size-1);
     end_time=clock();
-    //cout<<"After merge sort:"<<endl;
-    //printArray(array,size);
+    cout<<"After merge sort:"<<endl;
+    printArray(array,size);
     cout << "Time taken using merge sort: " << (double)(end_time - start_time) / CLOCKS_PER_SEC << " seconds" << endl; // Calculates Time Taken From Start To End 
     cout<<"\n";
 
-    cout<<"Reverse sorted array:"<<endl;
+    cout<<"Case 3: Reverse sorted array"<<endl;
     reverseSortedArray(array,size);
-    //printArray(array,size);
+    printArray(array,size);
 
     start_time =clock();// Starts Timer
     selectionSort(array,size);
     end_time=clock();
-    //cout<<"After selection sort:"<<endl;
-    //printArray(array,size);
+    cout<<"After selection sort:"<<endl;
+    printArray(array,size);
     cout << "Time taken using seletion sort: " << (double)(end_time - start_time) / CLOCKS_PER_SEC << " seconds" << endl; // Calculates Time Taken From Start To End
 
     reverseSortedArray(array,size);
     start_time =clock();// Starts Timer
     mergeSort(array,0,size-1);
     end_time=clock();
-    //cout<<"After merge sort:"<<endl;
-    //printArray(array,size);
+    cout<<"After merge sort:"<<endl;
+    printArray(array,size);
     cout << "Time taken using merge sort: " << (double)(end_time - start_time) / CLOCKS_PER_SEC << " seconds" << endl; // Calculates Time Taken From Start To End 
 }
