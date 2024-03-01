@@ -12,7 +12,7 @@ public:
 
     Heap() : Arr(nullptr), size(0) {}
 
-    void printArray(int Arr[], int n) {
+    void printArray(int Arr[], int n) {   //Function that will print out the array 
         for (int i = 0; i < n; ++i) {
             cout << Arr[i] << " ";
         }
@@ -20,18 +20,18 @@ public:
     }
 
     // Max Heap
-    void modifyValMax(int Arr[], int i, int val) {
-        Arr[i] = val;
+    void modifyValMax(int Arr[], int i, int val) {      // Function that will replace the max value and mainain heap structure.
+        Arr[i] = val;   
         max_heapify(Arr, i);
     }
 
-    void insert_value_maxHeap(int val) {
+    void insert_value_maxHeap(int val) {                // Any new element can be added to the array 
         Arr[size] = val;
         ++size;
         max_heapify(Arr, size - 1);
     }
 
-    int extract_maximum() {
+    int extract_maximum() {                             // Extracts the maximum value from the heap and removes it from the list
         if (size <= 0)
             throw out_of_range("Heap underflow");
 
@@ -43,7 +43,7 @@ public:
     }
 
 
-    void ascendingHeapSort() {
+    void ascendingHeapSort() {                          // Restructures the heap into an ascending order.
 
         for (int i = size / 2 - 1; i >= 0; --i)
             max_heapify(Arr, i);
@@ -57,18 +57,18 @@ public:
     }
 
     // Min Heap
-    void modifyValMin(int Arr[], int i, int val) {
+    void modifyValMin(int Arr[], int i, int val) {      // The minimum value can be changed 
         Arr[i] = val;
         min_heapify(Arr, i);
     }
 
-    void insert_value_minHeap(int val) {
-        Arr[size] = val;
+    void insert_value_minHeap(int val) {                // Insert any element to the array 
+        Arr[size] = val;    
         ++size;
         min_heapify(Arr, size - 1);
     }
 
-    int extract_minimum() {
+    int extract_minimum() {                             // Extracts the minimum value from the heap and removes it from the list. 
         if (size <= 0)
             throw out_of_range("Heap underflow");
 
@@ -79,7 +79,7 @@ public:
         return min;
     }
 
-    void descendingHeapSort() {
+    void descendingHeapSort() {                         // Restructures the heap into a descedning order. 
         for (int i = size / 2 - 1; i >= 0; --i)
             min_heapify(Arr, i);
         int cSize=size;
@@ -91,7 +91,7 @@ public:
         size=cSize;
     }
     // Get heap
-    void getMaxHeapify(int Arr[], int i){
+    void getMaxHeapify(int Arr[], int i){               // Fucntions that call private functions. 
         for (int i = size / 2 - 1; i >= 0; --i)
             max_heapify(Arr, i);
     }
@@ -101,7 +101,7 @@ public:
     }
 
 private:
-    void max_heapify(int Arr[], int i) {
+    void max_heapify(int Arr[], int i) {                // Max Heap function
         int largest = i;
         int left = 2 * i + 1;
         int right = 2 * i + 2;
@@ -118,7 +118,7 @@ private:
         }
     }
 
-    void min_heapify(int Arr[], int i) {
+    void min_heapify(int Arr[], int i) {                // Min Heap function
         int smallest = i;
         int left = 2 * i + 1;
         int right = 2 * i + 2;
@@ -140,45 +140,53 @@ int main() {
     Heap pq;
     int n;
     int element=9;
-    cout << "Enter the number of elements: ";
+    cout << "Enter the number of elements: ";           //Asks the user for the array size
     cin >> n;
-    pq.Arr = new int[n];
+    pq.Arr = new int[n];                                // Creates a new array using the class
 
-    cout << "Enter the elements: ";
+    cout << "Enter the elements: ";                     // User enters all elements within the array 
     for (int i = 0; i < n; ++i) {
         int num;
         cin >> num;
         pq.insert_value_maxHeap(num);
     }
-    cout<<"Input Array:";
+    cout<<"Input Array:";                               // Displays the given array in a heap structure 
     pq.printArray(pq.Arr, pq.size);
 
-    cout<<"Input Element:"<<element;
+    cout<<"Input Element:"<<element;                    // Inputs a static number of 9
     pq.insert_value_maxHeap(element);
     cout<<endl;
 
     char order;
-    cout << "Enter the order (a for ascending, d for descending): ";
+    cout << "Enter the order (a for ascending, d for descending): ";    // Prompts the user for which order they would like
     cin >> order;
 
-    if (order == 'A'|| order == 'a'){
+    if (order == 'A'|| order == 'a'){                  // If statement depending on ascending or descending 
         pq.ascendingHeapSort();
-        cout << "Sorted Heap: ";
+        cout << "Sorted Heap: ";                        // Outputs the ascending form 
         pq.printArray(pq.Arr, pq.size);
         pq.getMaxHeapify(pq.Arr,0);
-        cout << "Extract Max value: " << pq.extract_maximum() << endl;
+        cout << "Extract Max value: " << pq.extract_maximum() << endl;  // Extracts the max value
         pq.ascendingHeapSort();
-        pq.printArray(pq.Arr, pq.size);
+        pq.printArray(pq.Arr, pq.size);               // Prints new heap without the extracted value 
+        cout<<"Min:"<<pq.Arr[0]<<endl;                // Min and Max are printed 
+        cout<<"Max:"<<pq.Arr[n-1]<<endl;
     }
     else{
         pq.descendingHeapSort();
-        cout << "Sorted Heap: ";
+        cout << "Sorted Heap: ";                     // Displays the descedning order
         pq.printArray(pq.Arr, pq.size);
-        pq.getMinHeapify(pq.Arr,0);
-        cout << "Extract Min value: " << pq.extract_minimum() << endl;
-        pq.descendingHeapSort();
-        pq.printArray(pq.Arr, pq.size);
+        pq.getMinHeapify(pq.Arr,0);         
+        cout << "Extract Min value: " << pq.extract_minimum() << endl;      // Extracts the min value 
+        pq.descendingHeapSort();    
+        pq.printArray(pq.Arr, pq.size);              // Displays the new array with the min value removed
+        cout<<"Min:"<<pq.Arr[n-1]<<endl;            // prints out min and max values 
+        cout<<"Max:"<<pq.Arr[0]<<endl;
     }
     delete[] pq.Arr;
     return 0;
 }
+
+
+
+
