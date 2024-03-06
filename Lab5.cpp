@@ -1,7 +1,7 @@
 /*  Author: Jovani Benavides
 *  Course: CSCI-115
 * 
-* Counting sort 
+* Counting sort & Radix Sort
 */
 #include <iostream>
 #include <ctime>
@@ -20,7 +20,7 @@ void printArray(int Arr[], int n) {
 // Function that creates a random array
 void randomArray(int arr[], int n) {
     for (int i = 0; i < n; i++) {
-        arr[i] = rand() % 10000; // Uses numbers up to 10000
+        arr[i] = rand() % 1; // Uses numbers up to 10000
     }
 }
 
@@ -50,7 +50,7 @@ void countingSort(int arr[], int n) {
         output[count[arr[i]] - 1] = arr[i];
         count[arr[i]]--;
     }
-
+    
     for (int i = 0; i < n; i++) // Transfers values into the actual array 
         arr[i] = output[i];
 }
