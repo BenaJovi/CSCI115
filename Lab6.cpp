@@ -1,3 +1,8 @@
+/*  Author: Jovani Benavides
+*  Course: CSCI-115
+* 
+* Quick Sort 
+*/
 #include <iostream>
 #include <ctime>
 
@@ -56,7 +61,7 @@ void quickSort(int arr[], int left, int right, int choice) {
 // Function that creates a random array
 void randomArray(int arr[], int n) {
     for (int i = 0; i < n; i++) {
-        arr[i] = rand() % 500000; // Uses numbers up to 10000
+        arr[i] = rand() % 1000; // Uses numbers up to 10000
     }
 }
 // Function to print the array
