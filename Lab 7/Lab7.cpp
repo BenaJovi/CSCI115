@@ -1,3 +1,8 @@
+/*  Author: Jovani Benavides
+ *  Course: CSCI-115
+ *  
+ *  
+ */
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -52,11 +57,9 @@ public:
         cout << "Cost ratios:" << endl;
 
         for (int i = 1; i <= size(); i++) {
-            // # probes at level / # updates at level
             double ratio = (updates[i] != 0) ? static_cast<double>((costs[i]) / updates[i]) : 0.0;
-            cout << "[" << i << "]: " << fixed << setprecision(2) << ratio;  //fixed to precision 2 decimal 
+            cout << "[" << i << "]: " << fixed << setprecision(2) << ratio;  
             
-            // commas and structure
             if (i != size()) {
                 cout << ", ";
             }
