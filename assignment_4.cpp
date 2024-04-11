@@ -1,6 +1,6 @@
 /*  Author: Jovani Benavides
 *  Course: CSCI-115
-* 
+*  Assignment 4: BST Traversal 
 * 
 */
 
@@ -50,59 +50,51 @@ public:
             cout << root->data << " ";
         }
     }
-
-    int findLargest(Node *root) {
-        Node* current = root;
-        while (current->RightChild != NULL) {
-            current = current->RightChild;
+      void printPreOrder(Node *root) {
+        if (root != NULL) {
+            cout << root->data << " ";
+            printPreOrder(root->LeftChild);
+            printPreOrder(root->RightChild);
+            
         }
-        return current->data;
     }
-
-    bool search(Node *root, int key) {
-        if (root == NULL) {
-            return false;
-        }
-        if (key == root->data) {
-            return true;
-        } else if (key < root->data) {
-            return search(root->LeftChild, key);
-        } else {
-            return search(root->RightChild, key);
+       void printInOrder(Node *root) {
+        if (root != NULL) {
+            printInOrder(root->LeftChild);
+            cout << root->data << " ";
+            printInOrder(root->RightChild);
         }
     }
 };
 
 int main() {
-    BST bst;
-
+    BST inorderTree;
+    BST preorderTree;
+// Part A: Construct a Binary Tree from Preorder and Inorder Traversal
+cout<<"Preorder:"<<endl;
     // Insert elements into the BST
-    int elements[] = {7, 20, 8, 9, 6, 1, 19, 15, 2, 10}; // numbers from the lab sample
+    int elements[] = {20,8,4,12,23,24}; // numbers from the sample
     for (int i = 0; i < sizeof(elements) / sizeof(elements[0]); i++) { // loop to insert all numbers into the BST
-        bst.insert(elements[i]);
+        inorderTree.insert(elements[i]);
         cout << elements[i] << " ";
     }
     cout << endl;
-
-    // Print the tree in post-order 
+cout<<"Inorder:"<<endl;
+   int elements2[] = {4,8,12,20,23,24}; // numbers from the sample
+    for (int i = 0; i < sizeof(elements2) / sizeof(elements2[0]); i++) { // loop to insert all numbers into the BST
+        preorderTree.insert(elements2[i]);
+        cout << elements2[i] << " ";
+    }
+    cout << endl;
+// Part B: Use the constructed BST to perform a postorder walk
+    // Print the tree in Post-order 
     cout << "Post-order: ";
-    bst.printPostOrder(bst.getRoot());
+    preorderTree.printPostOrder(preorderTree.getRoot());
     cout << endl;
 
-    // Find the largest key in the tree
-    cout << "Largest element in the list is:" << bst.findLargest(bst.getRoot()) << endl;
-
-    // Search for number in the BST 
-    int key;
-    cout << "Insert a number to check if its in the BST:";
-    cin >> key;
-    if (bst.search(bst.getRoot(), key)) {
-        cout << key << endl;
-    } 
-    else 
-    {
-        cout << key << " is not a member of the BST " << key << " not found" << endl;
-    }
-
+      // Print the tree in Post-order 
+    cout << "Post-order: ";
+    inorderTree.printPostOrder(inorderTree.getRoot());
+    cout << endl;
     return 0;
 }
